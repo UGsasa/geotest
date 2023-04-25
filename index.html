@@ -1,33 +1,44 @@
 <!DOCTYPE html>
-<html lang="ja">
-	<head>
-	<meta charset="utf-8">
-	</head>
-	<body>
-		<button onclick="test()">test</button>
-	</body>
-	
-	<script>
-		function test() {
-		    navigator.geolocation.getCurrentPosition(test2);
-		}
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/base.css" />
+    <style>
+      /* ボタンを中央に配置するためのスタイル */
+      .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+    </style>
+    <title>geoテストへようこそ</title>
+  </head>
+  <body>
+    <div class="center">
+      <a href="javascript:goToTop();" class="btn btn-c">スタート</a>
+    </div>
 
-		function test2(position) {
+    <script>
+    function test() {
+      navigator.geolocation.getCurrentPosition(test2);
+    }
 
-		    var geo_text = "緯度:" + position.coords.latitude + "\n";
-		    geo_text += "経度:" + position.coords.longitude + "\n";
-		    geo_text += "高度:" + position.coords.altitude + "\n";
-		    geo_text += "位置精度:" + position.coords.accuracy + "\n";
-		    geo_text += "高度精度:" + position.coords.altitudeAccuracy  + "\n";
-		    geo_text += "移動方向:" + position.coords.heading + "\n";
-		    geo_text += "速度:" + position.coords.speed + "\n";
+    function test2(position) {
 
-		    var date = new Date(position.timestamp);
+      var geo_text = "緯度:" + position.coords.latitude + "\n";
+      geo_text += "経度:" + position.coords.longitude + "\n";
+      geo_text += "高度:" + position.coords.altitude + "\n";
+      geo_text += "位置精度:" + position.coords.accuracy + "\n";
+      geo_text += "高度精度:" + position.coords.altitudeAccuracy  + "\n";
+      geo_text += "移動方向:" + position.coords.heading + "\n";
+      geo_text += "速度:" + position.coords.speed + "\n";
 
-		    geo_text += "取得時刻:" + date.toLocaleString() + "\n";
+      var date = new Date(position.timestamp);
 
-		    alert(geo_text);
+      geo_text += "取得時刻:" + date.toLocaleString() + "\n";
 
-		}
-	</script>
+      alert(geo_text);
+    </script>
+  </body>
 </html>
